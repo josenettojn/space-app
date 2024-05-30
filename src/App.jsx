@@ -9,6 +9,7 @@ import { styled } from "styled-components";
 import fotos from "./fotos.json";
 import { useState } from "react";
 import { ModalZoom } from "./componentes/ModalZoom";
+import { Rodape } from "./componentes/Rodape";
 
 const FundoGradiente = styled.div`
   background: linear-gradient(
@@ -81,6 +82,7 @@ function App() {
           </ConteudoGaleria>
         </MainContainer>
       </AppContainer>
+      <Rodape />
       <ModalZoom
         foto={fotoSelecionada}
         aoFechar={() => setFotoSelecionada(null)}

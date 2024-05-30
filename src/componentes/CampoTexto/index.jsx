@@ -7,7 +7,8 @@ const ContainerEstilizado = styled.div`
 `;
 
 const CampoEstilizado = styled.input`
-  width: 602px;
+  width: 100%;
+  max-width: 602px;
   height: 56px;
   border-radius: 10px;
   border: 2px solid #c98cf1;

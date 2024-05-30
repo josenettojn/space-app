@@ -7,6 +7,10 @@ const ColunaFotos = styled.section`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  @media (max-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 `;
 
 const Imagem = styled.img`

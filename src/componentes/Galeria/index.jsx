@@ -6,7 +6,10 @@ import { Imagem } from "./Imagem";
 
 const GaleriaContainer = styled.div`
   display: flex;
-  align-items: center;
+  gap: 24px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const SecaoFluida = styled.section`

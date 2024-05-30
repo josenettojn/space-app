@@ -8,6 +8,10 @@ const HeaderEstilizado = styled.header`
   img {
     max-width: 212px;
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 24px;
+  }
 `;
 
 export const Cabecalho = () => {

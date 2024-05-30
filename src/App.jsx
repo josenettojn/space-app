@@ -18,19 +18,25 @@ const FundoGradiente = styled.div`
     #04244f 48%,
     #154580 96.76%
   );
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  height: 100%;
 `;
 
 const AppContainer = styled.div`
   width: 1440px;
   max-width: 100%;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    padding: 0 3px;
+  }
 `;
 
 const MainContainer = styled.main`
   display: flex;
   gap: 24px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const ConteudoGaleria = styled.section`

@@ -1,8 +1,14 @@
-import { styled } from "styled-components";
-import EstilosGlobais from "./componentes/EstilosGlobais";
-import Cabecalho from "./componentes/Cabecalho";
+import { Banner } from "./componentes/Banner";
+import { Galeria } from "./componentes/Galeria";
+import { Cabecalho } from "./componentes/Cabecalho";
 import { BarraLateral } from "./componentes/BarraLateral";
-import Banner from "./componentes/Banner";
+import { EstilosGlobais } from "./componentes/EstilosGlobais";
+
+import { styled } from "styled-components";
+
+import fotos from "./fotos.json";
+import { useState } from "react";
+import { ModalZoom } from "./componentes/ModalZoom";
 
 const FundoGradiente = styled.div`
   background: linear-gradient(
@@ -15,23 +21,71 @@ const FundoGradiente = styled.div`
   height: 100vh;
 `;
 
-const Main = styled.main`
-  display: flex;
-  gap: 64px;
+const AppContainer = styled.div`
+  width: 1440px;
+  max-width: 100%;
+  margin: 0 auto;
 `;
 
+const MainContainer = styled.main`
+  display: flex;
+  gap: 24px;
+`;
+
+const ConteudoGaleria = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`;
 function App() {
+  const [fotosDaGaleria, setFotosDaGaleria] = useState(fotos);
+  const [fotoSelecionada, setFotoSelecionada] = useState(null);
+
+  const aoAlternarFavorito = (foto) => {
+    if (foto.id === fotoSelecionada?.id) {
+      setFotoSelecionada({
+        ...fotoSelecionada,
+        favorita: !fotoSelecionada.favorita,
+      });
+    }
+    setFotosDaGaleria(
+      fotosDaGaleria.map((fotoDaGaleria) => {
+        return {
+          ...fotoDaGaleria,
+          favorita:
+            fotoDaGaleria.id === foto.id
+              ? !foto.favorita
+              : fotoDaGaleria.favorita,
+        };
+      })
+    );
+  };
+
   return (
     <FundoGradiente>
       <EstilosGlobais />
-      <Cabecalho />
-      <Main>
-        <BarraLateral />
-        <Banner
-          texto={"A galeria mais completa de fotos do espaço!"}
-          backgroundImage={"/imagens/banner.png"}
-        />
-      </Main>
+      <AppContainer>
+        <Cabecalho />
+        <MainContainer>
+          <BarraLateral />
+          <ConteudoGaleria>
+            <Banner
+              texto={"A galeria mais completa de fotos do espaço!"}
+              backgroundImage={"/imagens/banner.png"}
+            />
+            <Galeria
+              aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
+              aoAlternarFavorito={aoAlternarFavorito}
+              fotos={fotosDaGaleria}
+            />
+          </ConteudoGaleria>
+        </MainContainer>
+      </AppContainer>
+      <ModalZoom
+        foto={fotoSelecionada}
+        aoFechar={() => setFotoSelecionada(null)}
+        aoAlternarFavorito={aoAlternarFavorito}
+      />
     </FundoGradiente>
   );
 }

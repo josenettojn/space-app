@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 import GandhiSansRegular from "./fonts/GandhiSans-Regular.otf";
 import GandhiSansBold from "./fonts/GandhiSans-Bold.otf";
 
-const EstilosGlobais = createGlobalStyle`
+export const EstilosGlobais = createGlobalStyle`
 @font-face {
   font-family: 'GandhiSansRegular';
   src: local('Gandhi Sans Regular'), local('GandhiSansRegular'), url(${GandhiSansRegular});
@@ -157,5 +157,3 @@ template {
   display: none;
 }
 `;
-
-export default EstilosGlobais;

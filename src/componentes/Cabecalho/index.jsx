@@ -10,7 +10,7 @@ const HeaderEstilizado = styled.header`
   }
 `;
 
-const Cabecalho = () => {
+export const Cabecalho = () => {
   return (
     <HeaderEstilizado>
       <img src="/imagens/logo.png" alt="logo do projeto space app" />
@@ -18,5 +18,3 @@ const Cabecalho = () => {
     </HeaderEstilizado>
   );
 };
-
-export default Cabecalho;
